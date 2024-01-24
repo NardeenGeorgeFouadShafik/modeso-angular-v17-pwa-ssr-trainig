@@ -12,11 +12,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  install() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.promptEvent.prompt();
-    }
-  }
   promptEvent: any;
   webPushKeys = {
     publicKey:
@@ -24,11 +19,13 @@ export class AppComponent implements OnInit {
 
     privateKey: 'DqVDdoVXJlEqujS420FpVLRcZ2E0_-qjwKUu4NiVAVM',
   };
+  display: boolean = false;
+
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private swUpdate: SwUpdate,
     private swPush: SwPush,
-    private http: HttpClient,
+    private http: HttpClient
   ) {
     this.swUpdate.versionUpdates.subscribe(async (evt) => {
       console.log('UpdateService: versionUpdates', evt);
@@ -63,16 +60,20 @@ export class AppComponent implements OnInit {
       .subscribe(() => {
         console.log('news');
       });
-
   }
   async ngOnInit(): Promise<void> {
     const sub = await this.swPush.requestSubscription({
-      serverPublicKey: this.webPushKeys.publicKey
+      serverPublicKey: this.webPushKeys.publicKey,
     });
     console.log(sub);
     this.http
       .post('http://localhost:4000/api/notifications', sub)
       .subscribe(() => console.log('subscribtion requested'));
   }
-  title = 'modeso-angular-v17-pwa-ssr-trainig';
+  install() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.promptEvent.prompt();
+    }
+  }
+ 
 }

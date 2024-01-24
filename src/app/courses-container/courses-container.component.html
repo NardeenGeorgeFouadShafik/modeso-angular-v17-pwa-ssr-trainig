@@ -1,6 +1,8 @@
 <div>
 
-
+<button (click)="showData()"
+>show Data</button>
+  @defer(when display; prefetch on idle) {
   <div class="courses">
     @for (course of courses$ | async ; track course.id) {
     <app-course-card class="salmon-theme" [course]="course">
@@ -10,5 +12,6 @@
     } @empty {
     <span>No courses available </span>}
   </div>
+}
   <!--<button (click)="onEditCourse()">add course</button>-->
 </div>

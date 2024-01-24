@@ -15,16 +15,16 @@ import { Observable } from 'rxjs';
 export class CoursesContainerComponent {
   courses$?: Observable<Course[]>;
   courses: Course[] = [];
-
-  constructor(
-    private http: HttpClient,
-  ) {}
-
+  display: boolean = false;
+  
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.courses$ = this.http.get(
       'http://localhost:4000/api/courses'
     ) as Observable<Course[]>;
   }
-
+  showData() {
+    this.display = true;
+  }
 }
