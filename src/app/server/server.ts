@@ -1,4 +1,4 @@
-import * as express from 'express';
+/*import * as express from 'express';
 import { Application } from 'express';
 import { getAllCourses } from './courses.route';
 import { addPushSubscriber } from './add-push-subscriber.route';
@@ -32,3 +32,4 @@ app.route('/api/send-newsletter').post(sendNewsletter);
 const httpServer = app.listen(9000, () => {
   console.log('HTTP REST API Server running at http://localhost:9000');
 });
+*/

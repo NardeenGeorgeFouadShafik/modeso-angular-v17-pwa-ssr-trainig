@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
   }
   send(): void {
     this.http
-      .post('http://localhost:9000/api/send-newsletter', null)
+      .post('http://localhost:4000/api/send-newsletter', null)
       .subscribe(() => {
         console.log('news');
       });
@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
     });
     console.log(sub);
     this.http
-      .post('http://localhost:9000/api/notifications', sub)
+      .post('http://localhost:4000/api/notifications', sub)
       .subscribe(() => console.log('subscribtion requested'));
   }
   title = 'modeso-angular-v17-pwa-ssr-trainig';

@@ -23,7 +23,7 @@ export class CoursesContainerComponent {
 
   ngOnInit(): void {
     this.courses$ = this.http.get(
-      'http://localhost:9000/api/courses'
+      'http://localhost:4000/api/courses'
     ) as Observable<Course[]>;
   }
 
