@@ -1,0 +1,32 @@
+<div class="course-card" #container>
+  @if (course) {
+  <div class="course-title">
+    {{ course.description }}
+  </div>
+  @if (course.iconUrl) {
+  <ng-content class="salmon-theme"></ng-content>
+  }
+
+  <div class="course-description">
+    Edit Title: <input #courseTitle [value]="course.description" />
+  </div>
+
+  <div class="course-category">
+    @switch (course.category) { @case ('BEGINNER') {
+    <div class="category">Beginner</div>
+    } @case ('INTERMEDIATE') {
+    <div class="category">Intermediate</div>
+    }@case ('ADVANCED') {
+    <div class="category">Advanced</div>
+    } 
+    @default {
+          <div class="category">Unkwon</div>
+
+    }
+  }
+  </div>
+
+  } @else {
+  <p>no course found</p>
+  }
+</div>
