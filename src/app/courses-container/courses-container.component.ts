@@ -15,20 +15,16 @@ import { Observable } from 'rxjs';
 export class CoursesContainerComponent {
   courses$?: Observable<Course[]>;
   courses: Course[] = [];
-  display: boolean = false;
-  counterSignal = signal(0);
-  drivedCounter = computed(() => {
-    const drivedCounter = this.counterSignal();
-    return drivedCounter * 10;
-  });
-  promptEvent: any;
+
   constructor(
     private http: HttpClient,
   ) {}
 
 
   ngOnInit(): void {
-    this.courses$ = this.http.get('/api/courses') as Observable<Course[]>;
+    this.courses$ = this.http.get(
+      'http://localhost:9000/api/courses'
+    ) as Observable<Course[]>;
   }
 
 }

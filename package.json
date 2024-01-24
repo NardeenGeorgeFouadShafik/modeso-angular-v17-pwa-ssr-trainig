@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "server": "ts-node src/app/server/server.ts"
+    "server": "ts-node src/app/server/server.ts",
+    "start:prod": "ng build --configuration production && cd dist/modeso-angular-v17-pwa-ssr-trainig/browser && http-server -c-1 -P http://localhost:9000 ."
   },
   "private": true,
   "dependencies": {
@@ -19,6 +20,7 @@
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
+    "@angular/service-worker": "^17.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
