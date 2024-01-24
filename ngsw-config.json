@@ -26,5 +26,17 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "api-performance",
+      "urls": ["/api/courses"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "timeout": "5000",
+        "maxSize": 100,
+        "maxAge": "1d"
+      }
+    }
   ]
 }

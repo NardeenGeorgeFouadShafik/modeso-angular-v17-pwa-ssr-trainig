@@ -2,10 +2,10 @@ import { ApplicationConfig, importProvidersFrom, isDevMode } from '@angular/core
 import { RouterOutlet, provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { provideServiceWorker } from '@angular/service-worker';
 
 export const appConfig: ApplicationConfig = {
@@ -19,6 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideServiceWorker('ngsw-worker.js', {
         enabled: !isDevMode(),
         registrationStrategy: 'registerWhenStable:30000'
-    })
+    }), provideClientHydration(),
+    provideAnimations()
 ],
 };
