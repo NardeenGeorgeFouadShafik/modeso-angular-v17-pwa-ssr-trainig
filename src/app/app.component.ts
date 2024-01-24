@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   promptEvent: any;
   webPushKeys = {
     publicKey:
@@ -54,6 +54,8 @@ export class AppComponent implements OnInit {
       });
     }
   }
+  ngAfterViewInit(): void {
+  }
   send(): void {
     this.http
       .post('http://localhost:4000/api/send-newsletter', null)
@@ -75,5 +77,5 @@ export class AppComponent implements OnInit {
       this.promptEvent.prompt();
     }
   }
- 
+
 }

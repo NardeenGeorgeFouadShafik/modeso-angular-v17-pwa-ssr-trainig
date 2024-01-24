@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, AfterViewInit } from '@angular/core';
 import { Course } from '../models/course';
 import { CommonModule } from '@angular/common';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-course-card',
@@ -11,5 +12,9 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CourseCardComponent {
+  constructor() {}
   @Input() course?: Course;
+  ngAfterViewInit(): void {
+
+  }
 }

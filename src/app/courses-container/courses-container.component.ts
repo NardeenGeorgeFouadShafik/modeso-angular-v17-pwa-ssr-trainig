@@ -4,6 +4,7 @@ import { CourseCardComponent } from '../course-card/course-card.component';
 import { Course } from '../models/course';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-courses-container',
@@ -16,8 +17,18 @@ export class CoursesContainerComponent {
   courses$?: Observable<Course[]>;
   courses: Course[] = [];
   display: boolean = false;
-  
-  constructor(private http: HttpClient) {}
+
+  constructor(
+    private http: HttpClient,
+    private title: Title,
+    private meta: Meta
+  ) {
+     this.title.setTitle('testTag');
+     this.meta.addTag({
+       name: 'describtion',
+       content: 'testDescription',
+     });
+  }
 
   ngOnInit(): void {
     this.courses$ = this.http.get(
@@ -26,5 +37,8 @@ export class CoursesContainerComponent {
   }
   showData() {
     this.display = true;
+  }
+  ngAfterViewInit(): void {
+
   }
 }
